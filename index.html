@@ -1,10 +1,109 @@
 <!DOCTYPE html>
-<html>
+<head>
+    <title>Mateusz's Homepage</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+    </style>
+    <style>
+        html {
+            animation: animated_background 10s ease infinite;
+            background: radial-gradient(circle, rgba(188,0,255,1) 0%, rgba(255,101,55,1) 100%); 
+            background-size: 600% 600%;
+        }
+        @keyframes animated_background {
+            0%{background-position:0% 50%}
+            50%{background-position:100% 50%}
+            100%{background-position:0% 50%}
+        }
+
+        @keyframes reveal {
+            0%{margin-right: -12rem;}
+            10%{opacity: 1;}
+            50%{margin-right:4rem;opacity:1;}
+            90%{opacity:0;}
+            100%{margin-right: -12rem;}
+        }
+        h1 {
+            font-size: 5rem;
+            font-weight: 700;
+            margin-bottom:1rem;
+        }
+        a {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            font-weight: 400;
+            transition: 0.2s ease-in-out;
+        }
+        a:hover{
+            font-size: 4rem;
+        }
+        .text {
+            color: white;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .container {
+            margin-left: 3rem;
+            text-align: left;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .links{
+            margin-top:3rem;
+            width: 100%;
+            text-align: left;
+        }
+        #cat{
+            font-weight: 700;
+        }
+        #catContainer{
+            opacity: 0;
+            position: absolute;
+            bottom:0%;
+            right: 0%;
+        }
+        .showHide{
+            animation-name: reveal;
+            animation-duration: 3s;
+        }
+
+    </style>
+</head>
 <body>
+    <div class="container">
+        <h1 class="text" class="title" onclick="animateCat()">Mateusz<br>Polito</h1>
+        <p class="text" class="info">Applied Computer Science student from Wroclaw</p>
+        <div class="links">
+            <a class="text" href="https://github.com/Matipolit" target="_blank">GitHub</a>
+            <a class="text" href="https://www.linkedin.com/in/mateusz-polito-832901189/" target="_blank">   LinkedIn</a>
+        </div>
 
-<h1>Mateusz Polito's website.</h1>
-<a href="kitty">Kitty Animation</a>
+    </div>
+    <div id="catContainer">
+        <code id="cat" class="text"></code>
+    </div>
+    <script>
+        var cur_kitty = 0;
+        var kitty_standing= `|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp\\___/<br>\\&nbsp___________-|&nbspo&nbspo|&nbsp<br>&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp\\__/&nbsp<br>&nbsp|&nbsp_&nbsp&nbsp&nbsp__&nbsp&nbsp&nbsp_&nbsp&nbsp&nbsp|&nbsp<br>&nbsp|&nbsp||&nbsp|&nbsp&nbsp|&nbsp|&nbsp|&nbsp|&nbsp<br>&nbsp&nbsp-&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp-&nbsp`;
+        var kitty_walking1= '|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp\\___/<br>\\&nbsp___________-|&nbspo&nbspo|&nbsp<br>&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp\\__/&nbsp<br>&nbsp|&nbsp_&nbsp&nbsp&nbsp__&nbsp&nbsp&nbsp_&nbsp&nbsp&nbsp|&nbsp<br>&nbsp/&nbsp/\\&nbsp\\&nbsp&nbsp&nbsp/&nbsp/&nbsp\\&nbsp\\<br>&nbsp-&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp&nbsp-'
+        var kitty_walking2='|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp\\___/<br>\\&nbsp___________-|&nbspo&nbspo|&nbsp<br>&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp\\__/&nbsp<br>&nbsp|&nbsp_&nbsp&nbsp&nbsp__&nbsp&nbsp&nbsp_&nbsp&nbsp&nbsp|&nbsp<br>&nbsp\\&nbsp\\/&nbsp/&nbsp&nbsp&nbsp\\&nbsp\\/&nbsp/<br>&nbsp&nbsp&nbsp__&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp__'
+        kitties = [
+            kitty_walking1,
+            kitty_walking2
+        ];    
+        var myInterval = setInterval(function() {
+            document.getElementById("cat").innerHTML = kitties[(++cur_kitty) % kitties.length];
+        }, 400);
+        function animateCat(){
+            console.log("animate cat")
+            var cat = document.getElementById("catContainer");
+            
+            cat.classList.add("showHide");
+            setTimeout(function(){
+                cat.classList.remove("showHide");
+            },2500);
+        }
 
 
+    </script>
 </body>
-</html>
