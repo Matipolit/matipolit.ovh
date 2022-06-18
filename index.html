@@ -17,30 +17,42 @@
         }
 
         @keyframes reveal {
-            0%{margin-right: -12rem;}
+            0%{margin-left: -12rem;}
             10%{opacity: 1;}
-            50%{margin-right:4rem;opacity:1;}
+            50%{margin-left:4rem;opacity:1;}
             90%{opacity:0;}
-            100%{margin-right: -12rem;}
+            100%{margin-left: -12rem;}
         }
+
+        @media only screen and (max-width: 500px) {
+            .info{
+                font-size: 2.5rem;
+            }
+            
+        }
+
         h1 {
-            font-size: 5rem;
+            font-size: 8rem;
             font-weight: 700;
             margin-bottom:1rem;
         }
         a {
-            font-size: 1.5rem;
+            font-size: 3rem;
             margin-right: 1rem;
             font-weight: 400;
             transition: 0.2s ease-in-out;
         }
         a:hover{
-            font-size: 4rem;
+            font-size: 6rem;
+        }
+        .info{
+            font-size: 2rem;
         }
         .text {
             color: white;
             font-family: 'JetBrains Mono', monospace;
         }
+
         .container {
             margin-left: 3rem;
             text-align: left;
@@ -59,22 +71,22 @@
         #catContainer{
             opacity: 0;
             position: absolute;
-            bottom:0%;
-            right: 0%;
+            bottom: 0%;
         }
         .showHide{
             animation-name: reveal;
             animation-duration: 3s;
         }
 
+
     </style>
 </head>
 <body>
     <div class="container">
-        <h1 class="text" class="title" onclick="animateCat()">Mateusz<br>Polito</h1>
-        <p class="text" class="info">Applied Computer Science student from Wroclaw</p>
+        <h1 class="text" onclick="animateCat()" >Mateusz<br>Polito</h1>
+        <p class="text info">Applied Computer Science student from Wroclaw</p>
         <div class="links">
-            <a class="text" href="https://github.com/Matipolit" target="_blank">GitHub</a>
+            <a href="https://github.com/Matipolit" class="text" target="_blank">GitHub</a>
             <a class="text" href="https://www.linkedin.com/in/mateusz-polito-832901189/" target="_blank">   LinkedIn</a>
         </div>
 
