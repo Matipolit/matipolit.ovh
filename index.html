@@ -24,30 +24,20 @@
             90%{opacity:0;}
             100%{margin-left: -12rem;}
         }
-
-        @media only screen and (max-width: 500px) {
-            .info{
-                font-size: 2.5rem;
-            }
-            
-        }
-
-        h1 {
-            font-size: 8rem;
+        .title {
+            font-size: 4rem;
             font-weight: 700;
             margin-bottom:1rem;
         }
-        a {
-            font-size: 3rem;
+        .link {
             margin-right: 1rem;
-            font-weight: 400;
             transition: 0.2s ease-in-out;
         }
-        a:hover{
-            font-size: 6rem;
+        .link:hover{
+            font-size: 2rem;
         }
         .info{
-            font-size: 2rem;
+            font-size: 1.15rem;
         }
         .text {
             color: white;
@@ -55,14 +45,17 @@
         }
 
         .container {
-            margin-left: 3rem;
+            margin-left: auto;
+            margin-right: auto;
             text-align: left;
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
         }
         .links{
-            margin-top:3rem;
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-top:1.15rem;
             width: 100%;
             text-align: left;
         }
@@ -79,16 +72,35 @@
             animation-duration: 3s;
         }
 
+        @media only screen and (min-width: 600px) {
+            .info{
+                font-size: 2rem;
+            }
+            .title{
+                font-size: 8rem;
+            }
+            .link:hover{
+            font-size: 3rem;
+            }
+            .container{
+                margin-left:3rem;
+            }
+            .links{
+                font-size: 2rem;
+                margin-top:3rem;
+            } 
+        }
 
+        
     </style>
 </head>
 <body>
     <div class="container">
-        <h1 class="text" onclick="animateCat()" >Mateusz<br>Polito</h1>
+        <h1 class="text title" onclick="animateCat()" >Mateusz<br>Polito</h1>
         <p class="text info">Applied Computer Science student from Wroclaw</p>
         <div class="links">
-            <a href="https://github.com/Matipolit" class="text" target="_blank">GitHub</a>
-            <a class="text" href="https://www.linkedin.com/in/mateusz-polito-832901189/" target="_blank">   LinkedIn</a>
+            <a class="text link" href="https://github.com/Matipolit" target="_blank">GitHub</a>
+            <a class="text link" href="https://www.linkedin.com/in/mateusz-polito-832901189/" target="_blank">   LinkedIn</a>
         </div>
 
     </div>
