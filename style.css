@@ -1,0 +1,41 @@
+body{
+    font-family: sans-serif;
+}
+
+li {
+    display: block;
+    text-decoration: none;
+    background-color: #EEE;
+    border: solid;
+    border-color: gray;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    border-width: thin;
+}
+ul {
+    list-style-type: none;
+    overflow: auto;
+    padding: 0;
+}
+
+
+
+h3 {
+    margin: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        color: #EEE;
+        background: #111;
+    }
+    a {
+        color: #96c9ff;
+    }
+    li {
+        background-color: #555;
+    }
+
+}
