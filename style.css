@@ -43,9 +43,16 @@ h3 {
   border-radius: 25%;
 }
 
+.icons{
+  margin-top: 0.4rem;
+  display: flex;
+  gap: 0.3rem;
+}
+
 .icon {
   display: inline-block;
   overflow: hidden;
+  width: 2rem;
 }
 
 @media only screen and (min-width: 600px) {
