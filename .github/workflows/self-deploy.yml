@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: [self-hosted, instance-matipolit-1] # Change 'your-runner-label' to the label of your self-hosted runner
+    runs-on: [self-hosted]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
