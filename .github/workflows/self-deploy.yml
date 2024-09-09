@@ -15,7 +15,7 @@ jobs:
       - name: Deploy to server
         run: |
           # Set up SSH and deploy
-          sudo rsync -avz --delete ./ /var/www/html/
+          sudo rsync -avz --delete --exclude='.git' --exclude='.github' ./ /var/www/html/
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SSH_USER: ${{ secrets.SSH_USER }}
