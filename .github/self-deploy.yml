@@ -1,0 +1,23 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, instance-matipolit-1] # Change 'your-runner-label' to the label of your self-hosted runner
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy to server
+        run: |
+          # Set up SSH and deploy
+          sudo rsync -avz --delete ./ /var/www/html/
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+
