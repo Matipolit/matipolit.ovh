@@ -10,7 +10,7 @@ window.addEventListener("load", (_) => {
 
   const cookies = document.cookie;
 
-  const theme = "catppuccin";
+  let theme = "catppuccin";
   if (cookies.includes("theme")) {
     theme = cookies.split("theme=")[1].split(";")[0];
   }
