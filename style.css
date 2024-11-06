@@ -1,10 +1,27 @@
+:root {
+    --color-dark: #cad3f5;
+    --bg-color-dark: #24273a;
+    --link-color-dark: #f0c6c6;
+    --link-hover-color-dark: #8aadf4;
+    --shiny-color-dark: #5b607866;
+    --card-background-color-dark: #363a4f;
+    --border-color-dark: #6e738d;
+
+    --color: #4c4f69;
+    --background-color: #eff1f5;
+    --link-color: #7287fd;
+    --link-hover-color: #1e66f5;
+    --card-background-color: #ccd0da;
+    --border-color: #9ca0b0;
+    --shiny-color: #7c7f9366;
+}
 html {
   font-family: sans-serif;
   max-width: 65rem;
   margin: auto;
   padding: 1rem;
-  background-color: #eff1f5;
-  color: #4c4f69;
+  background-color: var(--background-color);
+  color: var(--color);
 }
 
 header {
@@ -14,24 +31,27 @@ header {
 }
 
 a {
-  color: #7287fd;
+  color: var(--link-color);
 }
 
 a:hover {
-  color: #1e66f5;
+  color: var(--link-hover-color);
 }
 
 li {
   display: block;
   text-decoration: none;
-  background-color: #ccd0da;
+  background-color: var(--card-background-color);
   border: solid;
-  border-color: #9ca0b0;
+  border-color: var(--border-color);
   padding: 0.5rem;
   border-radius: 0.4rem;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
   border-width: thin;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 ul {
@@ -45,6 +65,49 @@ ul {
 
 h3 {
   margin: 0;
+}
+
+button {
+  background-color: var(--card-background-color);
+  border-radius: 6px;
+  padding: 0.25rem;
+  border: solid;
+  
+  font-family: sans-serif;
+  border-color: var(--border-color);
+}
+
+button:hover{
+  
+  background-color: var(--background-color);
+}
+
+fieldset {
+  border-radius: 0.4rem;
+  border-color: var(--border-color);
+  margin-bottom: 1rem;
+}
+
+#themeButton {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 4rem;
+  height: 4rem;
+}
+
+#themeSettings {
+  background-color: var(--card-background-color);
+  border: solid;
+  border-color: var(--border-color);
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+  border-width: thin;
+  position: fixed;
+  bottom: 7rem;
+  right: 2rem;
+  visibility: hidden;
 }
 
 .head {
@@ -69,6 +132,8 @@ h3 {
   display: inline-block;
   overflow: hidden;
   width: 3rem;
+  height: 3rem;
+  border-radius: 0.4rem;
 }
 
 .shiny {
@@ -83,7 +148,7 @@ h3 {
   left: calc(var(--x, 0) * 1px - 250px);
   width: 500px;
   height: 500px;
-  background: radial-gradient(#7c7f9366, #3984ff00 50%);
+  background: radial-gradient(var(--shiny-color), #3984ff00 50%);
   pointer-events: none;
 
   opacity: 0;
@@ -102,26 +167,40 @@ h3 {
 
 @media (prefers-color-scheme: dark) {
   html {
-    color: #cad3f5;
-    background-color: #24273a;
+    color: var(--color-dark);
+    background-color: var(--bg-color-dark);
   }
 
   a {
-    color: #f0c6c6;
+    color: var(--link-color-dark);
   }
 
   a:hover {
-    color: #8aadf4;
+    color: var(--link-hover-color-dark);
   }
 
   .shiny::after {
-    background: radial-gradient(#5b607866, #00000000 50%);
+    background: radial-gradient(var(--shiny-color-dark), #00000000 50%);
   }
 
   li {
-    background-color: #363a4f;
+    background-color: var(--card-background-color-dark);
     border: solid;
-    border-color: #6e738d;
+    border-color: var(--border-color-dark);
+  }
+
+  #themeSettings {
+    background-color: var(--card-background-color-dark);
+    border: solid;
+    border-color: var(--border-color-dark);
+  }
+
+  fieldset{
+    border-color: var(--border-color-dark);
+  }
+
+  button {
+    border-color: var(--border-color-dark);
   }
 
 }
