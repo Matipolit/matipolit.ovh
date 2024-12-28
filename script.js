@@ -54,6 +54,7 @@ window.addEventListener("load", (_) => {
 
 function setTheme(themeName) {
   const root = document.querySelector(":root");
+  const themedIcons = document.querySelectorAll(".text-icon");
   const d = new Date();
   d.setTime(d.getTime() + 100 * 24 * 60 * 60 * 1000);
   let expires = "expires=" + d.toUTCString();
@@ -75,6 +76,13 @@ function setTheme(themeName) {
     root.style.setProperty("--card-background-color", "#ccd0da");
     root.style.setProperty("--border-color", "#9ca0b0");
     root.style.setProperty("--shiny-color", "#7c7f9366");
+
+    themedIcons.forEach((icon) => {
+      const src = icon.getAttribute("src");
+      if (src.includes("gruvbox")) {
+        icon.setAttribute("src", src.replace("gruvbox", "catppuccin"));
+      }
+    });
   } else if (themeName === "gruvbox") {
     document.cookie = "theme=gruvbox;" + expires + ";SameSite=Strict";
     root.style.setProperty("--color-dark", "#ebdbb2"); // Light beige
@@ -92,5 +100,12 @@ function setTheme(themeName) {
     root.style.setProperty("--card-background-color", "#d5c4a1"); // Beige
     root.style.setProperty("--border-color", "#bdae93"); // Medium beige
     root.style.setProperty("--shiny-color", "#a8998466"); // Transparent beige
+
+    themedIcons.forEach((icon) => {
+      const src = icon.getAttribute("src");
+      if (src.includes("catppuccin")) {
+        icon.setAttribute("src", src.replace("catppuccin", "gruvbox"));
+      }
+    });
   }
 }

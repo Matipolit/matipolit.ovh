@@ -88,6 +88,16 @@ fieldset {
   margin-bottom: 1rem;
 }
 
+#links{
+  display: flex;
+  gap: 1rem;
+}
+
+#links a{
+  display: flex;
+  gap: 0.25rem;
+}
+
 #themeButton {
   position: fixed;
   bottom: 2rem;
