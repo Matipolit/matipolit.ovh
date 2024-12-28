@@ -38,7 +38,7 @@ a:hover {
   color: var(--link-hover-color);
 }
 
-li {
+li.shiny {
   display: block;
   text-decoration: none;
   background-color: var(--card-background-color);
@@ -54,7 +54,7 @@ li {
   justify-content: space-between;
 }
 
-ul {
+ul#projects {
   display: flex;
   flex-wrap: wrap;
   list-style-type: none;
@@ -170,7 +170,7 @@ fieldset {
 }
 
 @media only screen and (min-width: 600px) {
-  ul {
+  ul#projects {
     flex-wrap: nowrap;
   }
 }
@@ -193,7 +193,7 @@ fieldset {
     background: radial-gradient(var(--shiny-color-dark), #00000000 50%);
   }
 
-  li {
+  li.shiny {
     background-color: var(--card-background-color-dark);
     border: solid;
     border-color: var(--border-color-dark);
