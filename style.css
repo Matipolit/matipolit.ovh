@@ -16,202 +16,202 @@
     --shiny-color: #7c7f9366;
 }
 html {
-  font-family: sans-serif;
-  max-width: 65rem;
-  margin: auto;
-  padding: 1rem;
-  background-color: var(--background-color);
-  color: var(--color);
+    font-family: sans-serif;
+    max-width: 65rem;
+    margin: auto;
+    padding: 1rem;
+    background-color: var(--background-color);
+    color: var(--color);
 }
 
 header {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
 }
 
 a {
-  color: var(--link-color);
+    color: var(--link-color);
 }
 
 a:hover {
-  color: var(--link-hover-color);
+    color: var(--link-hover-color);
 }
 
 li.shiny {
-  display: block;
-  text-decoration: none;
-  background-color: var(--card-background-color);
-  border: solid;
-  border-color: var(--border-color);
-  padding: 0.5rem;
-  border-radius: 0.4rem;
-  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
-  border-width: thin;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+    display: block;
+    text-decoration: none;
+    background-color: var(--card-background-color);
+    border: solid;
+    border-color: var(--border-color);
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    border-width: thin;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 ul#projects {
-  display: flex;
-  flex-wrap: wrap;
-  list-style-type: none;
-  margin: auto;
-  padding: 0;
-  gap: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    margin: auto;
+    padding: 0;
+    gap: 0.5rem;
 }
 
 h3 {
-  margin: 0;
+    margin: 0;
 }
 
 button {
-  background-color: var(--card-background-color);
-  border-radius: 6px;
-  padding: 0.25rem;
-  border: solid;
-  
-  font-family: sans-serif;
-  border-color: var(--border-color);
+    background-color: var(--card-background-color);
+    border-radius: 6px;
+    padding: 0.25rem;
+    border: solid;
+
+    font-family: sans-serif;
+    border-color: var(--border-color);
 }
 
-button:hover{
-  
-  background-color: var(--background-color);
+button:hover {
+    background-color: var(--background-color);
 }
 
 fieldset {
-  border-radius: 0.4rem;
-  border-color: var(--border-color);
-  margin-bottom: 1rem;
+    border-radius: 0.4rem;
+    border-color: var(--border-color);
+    margin-bottom: 1rem;
 }
 
-#links{
-  display: flex;
-  gap: 1rem;
+#links {
+    display: flex;
+    gap: 1rem;
 }
 
-#links a{
-  display: flex;
-  gap: 0.25rem;
+#links a {
+    display: flex;
+    gap: 0.25rem;
 }
 
 #themeButton {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: 4rem;
-  height: 4rem;
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 4rem;
+    height: 4rem;
 }
 
 #themeSettings {
-  background-color: var(--card-background-color);
-  border: solid;
-  border-color: var(--border-color);
-  padding: 0.5rem;
-  border-radius: 0.4rem;
-  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
-  border-width: thin;
-  position: fixed;
-  bottom: 7rem;
-  right: 2rem;
-  visibility: hidden;
+    background-color: var(--card-background-color);
+    border: solid;
+    border-color: var(--border-color);
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    border-width: thin;
+    position: fixed;
+    bottom: 7rem;
+    right: 2rem;
+    visibility: hidden;
 }
 
 .head {
-  width: 4rem;
-  height: 4rem;
-  border-radius: 25%;
-  transition-property: transform;
-  transition-duration: 0.3s;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 25%;
+    transition-property: transform;
+    transition-duration: 0.3s;
 }
 
-.head:active{
-  transform: rotate(-360deg);
+.head:active {
+    transform: rotate(-360deg);
 }
 
-.icons{
-  margin-top: 0.4rem;
-  display: flex;
-  gap: 0.3rem;
+.icons {
+    margin-top: 0.4rem;
+    display: flex;
+    gap: 0.3rem;
 }
 
 .icon {
-  display: inline-block;
-  overflow: hidden;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 0.4rem;
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 0.4rem;
+}
+
+.text-icon {
+    width: 1.5rem;
+    height: 1.5rem;
 }
 
 .shiny {
-  position: relative;
-  overflow: hidden;
+    position: relative;
+    overflow: hidden;
 }
 
 .shiny::after {
-  content: "";
-  position: absolute;
-  top: calc(var(--y, 0) * 1px - 250px);
-  left: calc(var(--x, 0) * 1px - 250px);
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(var(--shiny-color), #3984ff00 50%);
-  pointer-events: none;
+    content: "";
+    position: absolute;
+    top: calc(var(--y, 0) * 1px - 250px);
+    left: calc(var(--x, 0) * 1px - 250px);
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(var(--shiny-color), #3984ff00 50%);
+    pointer-events: none;
 
-  opacity: 0;
-  /*transition: opacity 0.2s;*/
+    opacity: 0;
+    /*transition: opacity 0.2s;*/
 }
 
 .shiny:hover::after {
-  opacity: 0.4;
+    opacity: 0.4;
 }
 
 @media only screen and (min-width: 600px) {
-  ul#projects {
-    flex-wrap: nowrap;
-  }
+    ul#projects {
+        flex-wrap: nowrap;
+    }
 }
 
 @media (prefers-color-scheme: dark) {
-  html {
-    color: var(--color-dark);
-    background-color: var(--bg-color-dark);
-  }
+    html {
+        color: var(--color-dark);
+        background-color: var(--bg-color-dark);
+    }
 
-  a {
-    color: var(--link-color-dark);
-  }
+    a {
+        color: var(--link-color-dark);
+    }
 
-  a:hover {
-    color: var(--link-hover-color-dark);
-  }
+    a:hover {
+        color: var(--link-hover-color-dark);
+    }
 
-  .shiny::after {
-    background: radial-gradient(var(--shiny-color-dark), #00000000 50%);
-  }
+    .shiny::after {
+        background: radial-gradient(var(--shiny-color-dark), #00000000 50%);
+    }
 
-  li.shiny {
-    background-color: var(--card-background-color-dark);
-    border: solid;
-    border-color: var(--border-color-dark);
-  }
+    li.shiny {
+        background-color: var(--card-background-color-dark);
+        border: solid;
+        border-color: var(--border-color-dark);
+    }
 
-  #themeSettings {
-    background-color: var(--card-background-color-dark);
-    border: solid;
-    border-color: var(--border-color-dark);
-  }
+    #themeSettings {
+        background-color: var(--card-background-color-dark);
+        border: solid;
+        border-color: var(--border-color-dark);
+    }
 
-  fieldset{
-    border-color: var(--border-color-dark);
-  }
+    fieldset {
+        border-color: var(--border-color-dark);
+    }
 
-  button {
-    border-color: var(--border-color-dark);
-  }
-
+    button {
+        border-color: var(--border-color-dark);
+    }
 }
-
