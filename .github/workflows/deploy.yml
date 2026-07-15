@@ -45,4 +45,4 @@ jobs:
           ssh-keyscan -H $SSH_HOST >> ~/.ssh/known_hosts
 
           # 4. Sync the dist folder to the server
-          rsync -avz --delete ./dist/ $SSH_USER@$SSH_HOST:/var/www/html/
+          rsync -avz ./dist/ $SSH_USER@$SSH_HOST:/var/www/html/
