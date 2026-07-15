@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { projects } from "../../data/projects";
+---
+
+<BaseLayout title="All projects — Mateusz Polito" description="Complete list of projects by Mateusz Polito">
+  <main>
+    <a href="/" class="back-link">&larr; Back to home</a>
+    <h2>All projects</h2>
+    <ul class="project-list">
+      {
+        projects.map((p) => (
+          <li>
+            <a href={`/projects/${p.slug}`}>
+              <span class="project-icon">{p.icon}</span>
+              <div class="project-info">
+                <h3>{p.title}</h3>
+                <p>{p.description}</p>
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </main>
+</BaseLayout>

@@ -1,0 +1,13 @@
+---
+import { projects } from "../data/projects";
+import ProjectCard from "./ProjectCard.astro";
+
+const featured = projects.filter((p) => p.featured);
+---
+
+<h2>Highlighted projects</h2>
+<ul id="projects">
+    {featured.map((p) => <ProjectCard project={p} />)}
+</ul>
+
+<p><a href="/projects">See all projects &rarr;</a></p>

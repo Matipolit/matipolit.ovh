@@ -1,0 +1,242 @@
+---
+import "../styles/global.css";
+
+export interface Props {
+    title?: string;
+    description?: string;
+}
+
+const {
+    title = "Mateusz Polito",
+    description = "Mateusz Polito — about me and projects",
+} = Astro.props;
+
+// Theme color definitions - shared between head script and body script
+const themes = {
+    catppuccin: {
+        light: {
+            "--color": "#4c4f69",
+            "--background-color": "#eff1f5",
+            "--link-color": "#7287fd",
+            "--link-hover-color": "#1e66f5",
+            "--card-background-color": "#ccd0da",
+            "--border-color": "#9ca0b0",
+            "--shiny-color": "#7c7f9366",
+        },
+        dark: {
+            "--color-dark": "#cad3f5",
+            "--bg-color-dark": "#24273a",
+            "--link-color-dark": "#f0c6c6",
+            "--link-hover-color-dark": "#8aadf4",
+            "--shiny-color-dark": "#5b607866",
+            "--card-background-color-dark": "#363a4f",
+            "--border-color-dark": "#6e738d",
+        },
+        iconReplace: { from: "gruvbox", to: "catppuccin" },
+    },
+    gruvbox: {
+        light: {
+            "--color": "#3c3836",
+            "--background-color": "#f9f5d7",
+            "--link-color": "#d65d0e",
+            "--link-hover-color": "#b57614",
+            "--card-background-color": "#d5c4a1",
+            "--border-color": "#bdae93",
+            "--shiny-color": "#a8998466",
+        },
+        dark: {
+            "--color-dark": "#ebdbb2",
+            "--bg-color-dark": "#282828",
+            "--link-color-dark": "#85a598",
+            "--link-hover-color-dark": "#fabd2f",
+            "--shiny-color-dark": "#92837466",
+            "--card-background-color-dark": "#3c3836",
+            "--border-color-dark": "#665c54",
+        },
+        iconReplace: { from: "catppuccin", to: "gruvbox" },
+    },
+};
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content={description} />
+        <link rel="icon" href="data:image/png;base64,iVBORw0KGgo=" />
+        <title>{title}</title>
+
+        <!-- Apply theme immediately to prevent flash -->
+        <script is:inline define:vars={{ themes }}>
+            (() => {
+                // Astro injects `const themes = {...}` here via define:vars
+                // Save to window so body script can access without duplicating payload
+                window.__THEMES__ = themes;
+
+                const cookie = document.cookie;
+                let themeName = "catppuccin";
+                if (cookie.includes("theme=")) {
+                    themeName = cookie.split("theme=")[1].split(";")[0];
+                }
+                const theme = themes[themeName];
+                const root = document.documentElement;
+
+                // Apply both light and dark CSS variables immediately
+                Object.entries(theme.light).forEach(([key, value]) => {
+                    root.style.setProperty(key, value);
+                });
+                Object.entries(theme.dark).forEach(([key, value]) => {
+                    root.style.setProperty(key, value);
+                });
+
+                // Store theme name for the body script to use
+                window.__THEME__ = themeName;
+            })();
+        </script>
+    </head>
+    <body>
+        <slot />
+
+        <button id="themeButton" title="Switch theme" aria-label="Switch theme">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-palette"
+            >
+                <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"
+                ></circle><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"
+                ></circle><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"
+                ></circle><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"
+                ></circle><path
+                    d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"
+                ></path></svg
+            >
+        </button>
+        <div id="themeSettings">
+            <form id="themeForm">
+                <fieldset>
+                    <legend>Theme</legend>
+                    <input
+                        type="radio"
+                        id="themeRadioCatppuccin"
+                        name="theme"
+                        value="catppuccin"
+                    />
+                    <label for="themeRadioCatppuccin">Catppuccin</label>
+                    <input
+                        type="radio"
+                        id="themeRadioGruvbox"
+                        name="theme"
+                        value="gruvbox"
+                    />
+                    <label for="themeRadioGruvbox">Gruvbox</label>
+                </fieldset>
+                <button type="submit">Apply</button>
+            </form>
+        </div>
+
+        <script is:inline>
+            // Read themes from window (injected by head script)
+            const themes = window.__THEMES__;
+
+            function setTheme(themeName) {
+                const root = document.documentElement;
+                const themedIcons = document.querySelectorAll(".text-icon");
+                const d = new Date();
+                d.setTime(d.getTime() + 100 * 24 * 60 * 60 * 1000);
+                const expires = "expires=" + d.toUTCString();
+
+                const theme = themes[themeName];
+                if (!theme) return;
+
+                document.cookie = `theme=${themeName};${expires};SameSite=Strict`;
+
+                // Apply light theme variables
+                Object.entries(theme.light).forEach(([key, value]) => {
+                    root.style.setProperty(key, value);
+                });
+                // Apply dark theme variables
+                Object.entries(theme.dark).forEach(([key, value]) => {
+                    root.style.setProperty(key, value);
+                });
+
+                // Swap themed icons
+                themedIcons.forEach((icon) => {
+                    const src = icon.getAttribute("src");
+                    if (src?.includes(theme.iconReplace.from)) {
+                        icon.setAttribute(
+                            "src",
+                            src.replace(
+                                theme.iconReplace.from,
+                                theme.iconReplace.to,
+                            ),
+                        );
+                    }
+                });
+
+                window.__THEME__ = themeName;
+            }
+
+            window.addEventListener("load", () => {
+                const themeForm = document.getElementById("themeForm");
+                const catppuccinRadio = document.getElementById(
+                    "themeRadioCatppuccin",
+                );
+                const gruvboxRadio =
+                    document.getElementById("themeRadioGruvbox");
+                const themeButton = document.getElementById("themeButton");
+                const themeSettings = document.getElementById("themeSettings");
+                const shinyList = document.querySelectorAll(".shiny");
+
+                // Theme already applied by head script; just sync UI
+                const theme = window.__THEME__ || "catppuccin";
+
+                if (theme == "catppuccin") {
+                    catppuccinRadio.checked = true;
+                } else {
+                    gruvboxRadio.checked = true;
+                }
+
+                for (let i = 0; i < shinyList.length; i++) {
+                    const shinyElement = shinyList[i];
+                    shinyElement.addEventListener("mousemove", (event) => {
+                        const { x, y } = shinyElement.getBoundingClientRect();
+                        shinyElement.style.setProperty(
+                            "--x",
+                            event.clientX - x,
+                        );
+                        shinyElement.style.setProperty(
+                            "--y",
+                            event.clientY - y,
+                        );
+                    });
+                }
+
+                let visible = false;
+                themeButton.addEventListener("click", () => {
+                    if (visible) {
+                        themeSettings.style.visibility = "hidden";
+                        visible = false;
+                    } else {
+                        themeSettings.style.visibility = "visible";
+                        visible = true;
+                    }
+                });
+
+                themeForm.addEventListener("submit", (event) => {
+                    event.preventDefault();
+                    const formData = new FormData(themeForm);
+                    setTheme(formData.get("theme"));
+                });
+            });
+        </script>
+    </body>
+</html>

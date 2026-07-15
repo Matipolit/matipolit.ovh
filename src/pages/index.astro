@@ -1,0 +1,175 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectsSection from "../components/ProjectsSection.astro";
+---
+
+<BaseLayout>
+    <header>
+        <img
+            class="head"
+            src="/assets/pic_proffesional_crop.webp"
+            alt="My photo"
+            loading="lazy"
+        />
+        <h1>Mateusz Polito | Software engineer</h1>
+    </header>
+
+    <main>
+        <div id="links">
+            <a href="https://github.com/Matipolit" target="_blank">
+                <img
+                    class="text-icon"
+                    alt="Github icon"
+                    src="/assets-optimized/github-catppuccin.svg"
+                    width="48"
+                    height="48"
+                    loading="lazy"
+                />GitHub
+            </a>
+            <a
+                href="https://www.linkedin.com/in/mateusz-polito/"
+                target="_blank"
+            >
+                <img
+                    class="text-icon"
+                    alt="Linkedin icon"
+                    src="/assets-optimized/linkedin-catppuccin.svg"
+                    width="48"
+                    height="48"
+                    loading="lazy"
+                />LinkedIn
+            </a>
+            <a href="/assets/cv.pdf" target="_blank">
+                <img
+                    class="text-icon"
+                    alt="CV icon"
+                    src="/assets-optimized/document-catppuccin.svg"
+                    width="48"
+                    height="48"
+                    loading="lazy"
+                />CV
+            </a>
+        </div>
+
+        <ProjectsSection />
+
+        <br />
+        <h3>💼 Work experience</h3>
+        <p>3 years as software tester @ Nokia</p>
+        <ul>
+            <li>
+                <p>
+                    Designed and executed automated tests in Python & Robot
+                    Framework for CPRI/eCPRI over optical fiber and embedded
+                    Linux updates
+                </p>
+            </li>
+            <li>
+                <p>
+                    Built an internal session management tool to monitor RDP/SSH
+                    usage across test setups, preventing conflicts
+                </p>
+            </li>
+            <li>
+                <p>
+                    Migrated multiple hardware test environments from Windows to
+                    Linux
+                </p>
+            </li>
+            <li>
+                <p>
+                    Performed on-site labwork with radio units, optical testing
+                    gear, fiber cables, and simulated hardware (SIMICS)
+                </p>
+            </li>
+        </ul>
+
+        <h3>🧑‍🎓 Education</h3>
+        <p>Wrocław University of Science and Technology</p>
+        <ul>
+            <li>
+                <p>
+                    <u>Master's</u> in Applied Computer Science, Grade 5.0 / 5.0
+                </p>
+                <p>
+                    Thesis: automated benchmarking suite for ROS2 Visual SLAM
+                    algorithms
+                </p>
+            </li>
+            <li>
+                <p>Bachelor's in Applied Computer Science</p>
+                <p>Thesis: Web app for shooting ranges</p>
+            </li>
+        </ul>
+
+        <h3>📍 Location</h3>
+        <p>Wrocław, Poland</p>
+
+        <h3>🧑‍💻 Technologies I enjoy working with</h3>
+        <p>
+            <img
+                class="icon"
+                title="Rust"
+                alt="Rust"
+                src="/assets-optimized/icons8-rust.svg"
+                width="48"
+                height="48"
+                loading="lazy"
+            />
+            <img
+                class="icon"
+                title="React"
+                alt="React"
+                src="/assets/icons8-react.png"
+                width="48"
+                height="48"
+                loading="lazy"
+            />
+            <img
+                class="icon"
+                title="Python"
+                alt="Python"
+                src="/assets-optimized/icons8-python.svg"
+                width="48"
+                height="48"
+                loading="lazy"
+            />
+            <img
+                class="icon"
+                title="Django"
+                alt="Django"
+                src="/assets-optimized/icons8-django.svg"
+                width="48"
+                height="48"
+                loading="lazy"
+            />
+            <img
+                class="icon"
+                title="Typescript"
+                alt="Typescript"
+                src="/assets-optimized/icons8-typescript.svg"
+                width="48"
+                height="48"
+                loading="lazy"
+            />
+            <img
+                class="icon"
+                title="Javascript"
+                alt="javascript"
+                src="/assets-optimized/icons8-javascript.svg"
+                width="48"
+                height="48"
+                loading="lazy"
+            />
+            <img
+                class="icon"
+                title="Java"
+                alt="Java"
+                src="/assets-optimized/icons8-java.svg"
+                width="48"
+                height="48"
+                loading="lazy"
+            />
+        </p>
+    </main>
+</BaseLayout>

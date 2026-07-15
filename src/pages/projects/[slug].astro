@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import TechIcon from "../../components/TechIcon.astro";
+import { projects } from "../../data/projects";
+
+export async function getStaticPaths() {
+  return projects.map((p) => ({
+    params: { slug: p.slug },
+    props: { project: p },
+  }));
+}
+
+const { project } = Astro.props;
+---
+
+<BaseLayout title={`${project.title} — Mateusz Polito`} description={project.description}>
+  <main class="project-detail">
+    <a href="/projects" class="back-link">&larr; All projects</a>
+
+    <header>
+      <h1>{project.icon} {project.title}</h1>
+    </header>
+
+    <p>{project.longDescription}</p>
+
+    <div class="tech-list">
+      {project.technologies.map((tech) => <TechIcon name={tech} />)}
+    </div>
+
+    <div class="links">
+      {project.tryLink && <a href={project.tryLink} target="_blank">🚀 Try it out</a>}
+      {project.codeLink && <a href={project.codeLink} target="_blank">📂 Source code</a>}
+    </div>
+
+    {
+      project.screenshots && project.screenshots.length > 0 && (
+        <div class="screenshots">
+          <h3>Demo</h3>
+          {project.screenshots.map((src) => (
+            <img src={src} alt={`${project.title} screenshot`} loading="lazy" />
+          ))}
+        </div>
+      )
+    }
+  </main>
+</BaseLayout>
