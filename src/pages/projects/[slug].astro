@@ -58,15 +58,17 @@ const { project } = Astro.props;
 
         {
             project.images && project.images.length > 0 && (
-                <div class="screenshots">
+                <div>
                     <h3>Images</h3>
-                    {project.images.map((src) => (
-                        <Image
-                            src={src}
-                            alt={`${project.title} screenshot`}
-                            loading="lazy"
-                        />
-                    ))}
+                    <div class="screenshots">
+                        {project.images.map((src) => (
+                            <Image
+                                src={src}
+                                alt={`${project.title} screenshot`}
+                                loading="lazy"
+                            />
+                        ))}
+                    </div>
                 </div>
             )
         }
@@ -97,16 +99,25 @@ const { project } = Astro.props;
 
     .screenshots {
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap;
         gap: 1rem;
         margin: 1.5rem 0;
     }
 
     .screenshots :global(img) {
-        max-width: 100%;
+        display: flex;
+        max-height: 60vh;
+        max-width: 35vh;
         height: auto;
         align-self: flex-start;
         border-radius: 0.4rem;
         border: solid thin var(--border-color);
+        object-fit: contain;
+    }
+
+    .screenshots :global(img)[src*="mobile"],
+    .screenshots :global(img)[src*="Mobile"] {
+        max-height: 50vh;
+        max-width: 20vh;
     }
 </style>

@@ -31,7 +31,7 @@ const { project } = Astro.props;
                         rel="noopener noreferrer"
                         class="card-external-link"
                     >
-                        Try it out
+                        🚀 Try it out
                     </a>
                 )
             }
@@ -43,7 +43,7 @@ const { project } = Astro.props;
                         rel="noopener noreferrer"
                         class="card-external-link"
                     >
-                        Source
+                        📂 Source
                     </a>
                 )
             }
@@ -71,7 +71,6 @@ const { project } = Astro.props;
         text-decoration: none;
         background-color: var(--card-background-color);
         border: solid thin var(--border-color);
-        padding: 0.5rem;
         border-radius: 0.4rem;
         box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
         width: 100%;
@@ -106,7 +105,12 @@ const { project } = Astro.props;
     }
 
     .card-body {
+        padding: 0.6rem;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
         position: relative;
+        justify-content: space-between;
     }
 
     .card-external-link {

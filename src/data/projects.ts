@@ -1,7 +1,11 @@
 import type { ImageMetadata } from "astro";
 import inventoryMainDesktop from "../assets/screenshots/inventory/inventory-main-desktop.png";
+
 import testownikMainDesktop from "../assets/screenshots/testownik/testownik-main-desktop.png";
 import testownikTestDesktop from "../assets/screenshots/testownik/testownik-test-desktop.png";
+
+import przepisownikMainMobile from "../assets/screenshots/przepisownik/przepisownik-main-mobile.jpg";
+import przepisownikRecipeMobile from "../assets/screenshots/przepisownik/przepisownik-recipe-mobile.jpg";
 
 export interface Project {
   slug: string;
@@ -54,6 +58,16 @@ export const projects: Project[] = [
     featured: true,
     images: [inventoryMainDesktop]
   },
-
-
-];
+  {
+    slug: "przepisownik",
+    icon: "🍳",
+    title: "Przepisownik",
+    description: "Recipe app for android.",
+    longDescription:
+      "A recipe app for Android which displays a list of recipes downloaded from a server. It supports images and videos of the recipe, a separate ingredient list and the main recipe content. It has two themes, a custom theme for the app and a system theme. The app is built with Kotlin and Jetpack Compose.",
+    technologies: ["Kotlin", "JetpackCompose"],
+    codeLink: "https://github.com/Matipolit/Przepisownik",
+    featured: false,
+    images: [przepisownikMainMobile, przepisownikRecipeMobile]
+  }
+]
