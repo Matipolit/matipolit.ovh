@@ -1,6 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ProjectsSection from "../components/ProjectsSection.astro";
+import GitHubIcon from "../assets/github.svg";
+import LinkedInIcon from "../assets/linkedin.svg";
+import DocumentIcon from "../assets/document.svg";
+import RustIcon from "../assets/rust.svg";
+import ReactIcon from "../assets/react.svg";
+import PythonIcon from "../assets/python.svg";
+import DjangoIcon from "../assets/django.svg";
+import TypescriptIcon from "../assets/typescript.svg";
+import JavaIcon from "../assets/java.svg";
 ---
 
 <BaseLayout>
@@ -16,38 +25,25 @@ import ProjectsSection from "../components/ProjectsSection.astro";
 
     <main>
         <div id="links">
-            <a href="https://github.com/Matipolit" target="_blank">
-                <img
-                    class="text-icon"
-                    alt="Github icon"
-                    src="/assets-optimized/github-catppuccin.svg"
-                    width="48"
-                    height="48"
-                    loading="lazy"
-                />GitHub
+            <a
+                href="https://github.com/Matipolit"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <GitHubIcon class="text-icon" aria-hidden="true" />
+                GitHub
             </a>
             <a
                 href="https://www.linkedin.com/in/mateusz-polito/"
                 target="_blank"
+                rel="noopener noreferrer"
             >
-                <img
-                    class="text-icon"
-                    alt="Linkedin icon"
-                    src="/assets-optimized/linkedin-catppuccin.svg"
-                    width="48"
-                    height="48"
-                    loading="lazy"
-                />LinkedIn
+                <LinkedInIcon class="text-icon" aria-hidden="true" />
+                LinkedIn
             </a>
-            <a href="/assets/cv.pdf" target="_blank">
-                <img
-                    class="text-icon"
-                    alt="CV icon"
-                    src="/assets-optimized/document-catppuccin.svg"
-                    width="48"
-                    height="48"
-                    loading="lazy"
-                />CV
+            <a href="/assets/cv.pdf" target="_blank" rel="noopener noreferrer">
+                <DocumentIcon class="text-icon" aria-hidden="true" />
+                CV
             </a>
         </div>
 
@@ -107,69 +103,42 @@ import ProjectsSection from "../components/ProjectsSection.astro";
 
         <h3>🧑‍💻 Technologies I enjoy working with</h3>
         <p>
-            <img
-                class="icon"
-                title="Rust"
-                alt="Rust"
-                src="/assets-optimized/icons8-rust.svg"
-                width="48"
-                height="48"
-                loading="lazy"
-            />
-            <img
-                class="icon"
-                title="React"
-                alt="React"
-                src="/assets/icons8-react.png"
-                width="48"
-                height="48"
-                loading="lazy"
-            />
-            <img
-                class="icon"
-                title="Python"
-                alt="Python"
-                src="/assets-optimized/icons8-python.svg"
-                width="48"
-                height="48"
-                loading="lazy"
-            />
-            <img
-                class="icon"
-                title="Django"
-                alt="Django"
-                src="/assets-optimized/icons8-django.svg"
-                width="48"
-                height="48"
-                loading="lazy"
-            />
-            <img
-                class="icon"
-                title="Typescript"
-                alt="Typescript"
-                src="/assets-optimized/icons8-typescript.svg"
-                width="48"
-                height="48"
-                loading="lazy"
-            />
-            <img
-                class="icon"
-                title="Javascript"
-                alt="javascript"
-                src="/assets-optimized/icons8-javascript.svg"
-                width="48"
-                height="48"
-                loading="lazy"
-            />
-            <img
-                class="icon"
-                title="Java"
-                alt="Java"
-                src="/assets-optimized/icons8-java.svg"
-                width="48"
-                height="48"
-                loading="lazy"
-            />
+            <RustIcon class="icon" width="48" height="48" />
+            <ReactIcon class="icon" width="48" height="48" />
+            <PythonIcon class="icon" width="48" height="48" />
+            <DjangoIcon class="icon" width="48" height="48" />
+            <TypescriptIcon class="icon" width="48" height="48" />
+            <JavaIcon class="icon" width="48" height="48" />
         </p>
     </main>
 </BaseLayout>
+
+<style>
+    header {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    #links {
+        display: flex;
+        gap: 1rem;
+    }
+
+    #links a {
+        display: flex;
+        gap: 0.25rem;
+    }
+
+    .head {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 25%;
+        transition-property: transform;
+        transition-duration: 0.3s;
+    }
+
+    .head:active {
+        transform: rotate(-360deg);
+    }
+</style>

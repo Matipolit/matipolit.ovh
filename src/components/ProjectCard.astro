@@ -11,7 +11,16 @@ const { project } = Astro.props;
 
 <li class="shiny card">
     <div class="card-body">
-        <h3>{project.icon} {project.title}</h3>
+        <header>
+            <h3>
+                {project.icon}
+                {project.title}
+            </h3>
+            <div class="icons">
+                {project.technologies.map((tech) => <TechIcon name={tech} />)}
+            </div>
+        </header>
+
         <p>{project.description}</p>
         <div class="card-links">
             {
@@ -19,6 +28,7 @@ const { project } = Astro.props;
                     <a
                         href={project.tryLink}
                         target="_blank"
+                        rel="noopener noreferrer"
                         class="card-external-link"
                     >
                         Try it out
@@ -30,6 +40,7 @@ const { project } = Astro.props;
                     <a
                         href={project.codeLink}
                         target="_blank"
+                        rel="noopener noreferrer"
                         class="card-external-link"
                     >
                         Source
@@ -38,9 +49,82 @@ const { project } = Astro.props;
             }
         </div>
     </div>
-    <div class="icons">
-        {project.technologies.map((tech) => <TechIcon name={tech} />)}
-    </div>
     <a href={`/projects/${project.slug}`} class="stretched-link">View details</a
     >
 </li>
+
+<style>
+    header {
+        width: 100%;
+        justify-content: space-between;
+        display: flex;
+        align-items: center;
+    }
+    .card {
+        position: relative;
+    }
+
+    .shiny {
+        position: relative;
+        overflow: hidden;
+        display: block;
+        text-decoration: none;
+        background-color: var(--card-background-color);
+        border: solid thin var(--border-color);
+        padding: 0.5rem;
+        border-radius: 0.4rem;
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .shiny::after {
+        content: "";
+        position: absolute;
+        top: calc(var(--y, 0) * 1px - 250px);
+        left: calc(var(--x, 0) * 1px - 250px);
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(var(--shiny-color), #3984ff00 50%);
+        pointer-events: none;
+        opacity: 0;
+    }
+
+    .shiny:hover::after {
+        opacity: 0.4;
+    }
+
+    .stretched-link {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        overflow: hidden;
+        text-indent: 200%;
+        white-space: nowrap;
+    }
+
+    .card-body {
+        position: relative;
+    }
+
+    .card-external-link {
+        position: relative;
+        z-index: 2;
+    }
+
+    .card-links {
+        margin-top: 0.4rem;
+    }
+
+    .card-links a + a {
+        margin-left: 0.5rem;
+    }
+
+    .icons {
+        margin-top: 0.4rem;
+        display: flex;
+        gap: 0.3rem;
+    }
+</style>

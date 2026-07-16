@@ -11,3 +11,20 @@ const featured = projects.filter((p) => p.featured);
 </ul>
 
 <p><a href="/projects">See all projects &rarr;</a></p>
+
+<style>
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        list-style-type: none;
+        margin: auto;
+        padding: 0;
+        gap: 0.5rem;
+    }
+
+    @media only screen and (min-width: 600px) {
+        ul {
+            flex-wrap: nowrap;
+        }
+    }
+</style>

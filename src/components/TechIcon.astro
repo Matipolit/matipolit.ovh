@@ -1,20 +1,34 @@
 ---
-import { techIconMap } from "../data/projects";
+import RustIcon from "../assets/rust.svg";
+import ReactIcon from "../assets/react.svg";
+import PythonIcon from "../assets/python.svg";
+import DjangoIcon from "../assets/django.svg";
+import JavascriptIcon from "../assets/javascript.svg";
+import JavaIcon from "../assets/java.svg";
+import SvelteIcon from "../assets/ri--svelte-fill.svg";
+import CppIcon from "../assets/cpp.svg";
+import TokioIcon from "../assets/tokio.svg";
+import TypescriptIcon from "../assets/typescript.svg";
+
+const icons = {
+    Rust: RustIcon,
+    React: ReactIcon,
+    Python: PythonIcon,
+    Django: DjangoIcon,
+    JavaScript: JavascriptIcon,
+    TypeScript: TypescriptIcon,
+    Java: JavaIcon,
+    Svelte: SvelteIcon,
+    C: CppIcon,
+    Axum: TokioIcon,
+};
 
 export interface Props {
-  name: string;
+    name: string;
 }
 
 const { name } = Astro.props;
-const src = techIconMap[name];
+const Icon = icons[name as keyof typeof icons];
 ---
 
-<img
-  class="icon"
-  title={name}
-  alt={name}
-  src={src}
-  width="48"
-  height="48"
-  loading="lazy"
-/>
+<Icon class="icon" width="36" height="36" />

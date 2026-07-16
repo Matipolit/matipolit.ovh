@@ -1,46 +1,112 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import TechIcon from "../../components/TechIcon.astro";
+import { Image } from "astro:assets";
 import { projects } from "../../data/projects";
 
 export async function getStaticPaths() {
-  return projects.map((p) => ({
-    params: { slug: p.slug },
-    props: { project: p },
-  }));
+    return projects.map((p) => ({
+        params: { slug: p.slug },
+        props: { project: p },
+    }));
 }
 
 const { project } = Astro.props;
 ---
 
-<BaseLayout title={`${project.title} — Mateusz Polito`} description={project.description}>
-  <main class="project-detail">
-    <a href="/projects" class="back-link">&larr; All projects</a>
+<BaseLayout
+    title={`${project.title} — Mateusz Polito`}
+    description={project.description}
+>
+    <main class="project-detail">
+        <a href="/projects" class="back-link">&larr; All projects</a>
 
-    <header>
-      <h1>{project.icon} {project.title}</h1>
-    </header>
+        <header>
+            <h1>{project.icon} {project.title}</h1>
+        </header>
 
-    <p>{project.longDescription}</p>
+        <p>{project.longDescription}</p>
 
-    <div class="tech-list">
-      {project.technologies.map((tech) => <TechIcon name={tech} />)}
-    </div>
-
-    <div class="links">
-      {project.tryLink && <a href={project.tryLink} target="_blank">🚀 Try it out</a>}
-      {project.codeLink && <a href={project.codeLink} target="_blank">📂 Source code</a>}
-    </div>
-
-    {
-      project.screenshots && project.screenshots.length > 0 && (
-        <div class="screenshots">
-          <h3>Demo</h3>
-          {project.screenshots.map((src) => (
-            <img src={src} alt={`${project.title} screenshot`} loading="lazy" />
-          ))}
+        <div class="tech-list">
+            {project.technologies.map((tech) => <TechIcon name={tech} />)}
         </div>
-      )
-    }
-  </main>
+
+        <div class="links">
+            {
+                project.tryLink && (
+                    <a
+                        href={project.tryLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        🚀 Try it out
+                    </a>
+                )
+            }
+            {
+                project.codeLink && (
+                    <a
+                        href={project.codeLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        📂 Source code
+                    </a>
+                )
+            }
+        </div>
+
+        {
+            project.screenshots && project.screenshots.length > 0 && (
+                <div class="screenshots">
+                    <h3>Screenshots</h3>
+                    {project.screenshots.map((src) => (
+                        <Image
+                            src={src}
+                            alt={`${project.title} screenshot`}
+                            loading="lazy"
+                        />
+                    ))}
+                </div>
+            )
+        }
+    </main>
 </BaseLayout>
+
+<style>
+    .project-detail {
+        max-width: 50rem;
+    }
+
+    .project-detail header {
+        margin-bottom: 1rem;
+    }
+
+    .tech-list {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin: 1rem 0;
+    }
+
+    .links {
+        display: flex;
+        gap: 1rem;
+        margin: 1rem 0;
+    }
+
+    .screenshots {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin: 1.5rem 0;
+    }
+
+    .screenshots :global(img) {
+        max-width: 100%;
+        height: auto;
+        align-self: flex-start;
+        border-radius: 0.4rem;
+        border: solid thin var(--border-color);
+    }
+</style>
