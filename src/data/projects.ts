@@ -1,5 +1,7 @@
 import type { ImageMetadata } from "astro";
 import inventoryMainDesktop from "../assets/screenshots/inventory/inventory-main-desktop.png";
+import testownikMainDesktop from "../assets/screenshots/testownik/testownik-main-desktop.png";
+import testownikTestDesktop from "../assets/screenshots/testownik/testownik-test-desktop.png";
 
 export interface Project {
   slug: string;
@@ -10,7 +12,7 @@ export interface Project {
   technologies: string[];
   tryLink?: string;
   codeLink?: string;
-  screenshots?: ImageMetadata[];
+  images?: ImageMetadata[];
   featured: boolean;
 }
 
@@ -26,6 +28,18 @@ export const projects: Project[] = [
     tryLink: "https://matipolit.ovh/testownik",
     codeLink: "https://github.com/Matipolit/Testownik-svelte",
     featured: true,
+    images: [testownikMainDesktop, testownikTestDesktop]
+  },
+  {
+    slug: "weather-station",
+    icon: "🌤️",
+    title: "Weather Station",
+    description: "A weather station with a sensor and processing node for personal use.",
+    longDescription:
+      "A personal weather station that collects data from an ESP32 node with an SCD40 sensor and sends it via MQTT to a receiver program on a Raspberry Pi. The sensor node measures temperature, humidity, and pressure, while the processing node stores the data in InfluxDB, allowing the user to display it in Grafana. 100% Rust, on both the embedded and program side, with a shared JSON schema crate for easy communication.",
+    technologies: ["Rust"],
+    codeLink: "https://github.com/Matipolit/Air-quality-projet",
+    featured: true,
   },
   {
     slug: "inventory",
@@ -38,40 +52,8 @@ export const projects: Project[] = [
     codeLink: "https://github.com/Matipolit/Inventory",
     tryLink: "https://matipolit.ovh/inventory/web",
     featured: true,
-    screenshots: [inventoryMainDesktop]
+    images: [inventoryMainDesktop]
   },
-  {
-    slug: "planer",
-    icon: "🏠",
-    title: "Planer",
-    description: "Web app for managing shared flats",
-    longDescription:
-      "A full-stack web application for coordinating household tasks, expenses, and schedules in shared flats. Built with Django, it handles user authentication, shared task lists, expense splitting, and a calendar view so everyone in the flat stays on the same page.",
-    technologies: ["Python", "Django"],
-    codeLink: "https://github.com/Matipolit/planer",
-    featured: false,
-  },
-  {
-    slug: "shut-the-box",
-    icon: "⌨️",
-    title: "Shut the box",
-    description: "React & three.js logic game",
-    longDescription:
-      "A browser-based implementation of the classic 'Shut the Box' dice game. Features 3D dice rolling with three.js, smooth animations, and a responsive React UI. Roll the dice and flip down the corresponding numbered tiles to clear the board.",
-    technologies: ["JavaScript", "React"],
-    tryLink: "https://matipolit.ovh/shut-the-box",
-    codeLink: "https://github.com/Matipolit/Shut-the-box",
-    featured: false,
-  },
-  {
-    slug: "co2-app",
-    icon: "💡",
-    title: "CO2 App",
-    description: "Desktop App for displaying CO2 levels in my room",
-    longDescription:
-      "A Rust-based desktop application that reads data from a CO2 sensor and displays real-time air quality readings. Helps monitor ventilation needs by showing CO2 concentration, temperature, and humidity in an intuitive GUI.",
-    technologies: ["Rust"],
-    codeLink: "https://github.com/Matipolit/co2-app",
-    featured: false,
-  },
+
+
 ];

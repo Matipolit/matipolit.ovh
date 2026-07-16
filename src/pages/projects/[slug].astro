@@ -57,10 +57,10 @@ const { project } = Astro.props;
         </div>
 
         {
-            project.screenshots && project.screenshots.length > 0 && (
+            project.images && project.images.length > 0 && (
                 <div class="screenshots">
-                    <h3>Screenshots</h3>
-                    {project.screenshots.map((src) => (
+                    <h3>Images</h3>
+                    {project.images.map((src) => (
                         <Image
                             src={src}
                             alt={`${project.title} screenshot`}
