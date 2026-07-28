@@ -32,17 +32,18 @@ export const projects: Project[] = [
     tryLink: "https://matipolit.ovh/testownik",
     codeLink: "https://github.com/Matipolit/Testownik-svelte",
     featured: true,
-    images: [testownikMainDesktop, testownikTestDesktop]
+    images: [testownikMainDesktop, testownikTestDesktop],
   },
   {
     slug: "weather-station",
     icon: "🌤️",
     title: "Weather Station",
-    description: "A weather station with a sensor and processing node for personal use.",
+    description:
+      "A weather station with a sensor and processing node for personal use.",
     longDescription:
       "A personal weather station that collects data from an ESP32 node with an SCD40 sensor and sends it via MQTT to a receiver program on a Raspberry Pi. The sensor node measures temperature, humidity, and pressure, while the processing node stores the data in InfluxDB, allowing the user to display it in Grafana. 100% Rust, on both the embedded and program side, with a shared JSON schema crate for easy communication.",
     technologies: ["Rust"],
-    codeLink: "https://github.com/Matipolit/Air-quality-projet",
+    codeLink: "https://github.com/Matipolit/Air-quality-project",
     featured: true,
   },
   {
@@ -56,7 +57,7 @@ export const projects: Project[] = [
     codeLink: "https://github.com/Matipolit/Inventory",
     tryLink: "https://matipolit.ovh/inventory/web",
     featured: true,
-    images: [inventoryMainDesktop]
+    images: [inventoryMainDesktop],
   },
   {
     slug: "przepisownik",
@@ -68,6 +69,6 @@ export const projects: Project[] = [
     technologies: ["Kotlin", "JetpackCompose"],
     codeLink: "https://github.com/Matipolit/Przepisownik",
     featured: false,
-    images: [przepisownikMainMobile, przepisownikRecipeMobile]
-  }
-]
+    images: [przepisownikMainMobile, przepisownikRecipeMobile],
+  },
+];
