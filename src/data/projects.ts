@@ -7,6 +7,8 @@ import testownikTestDesktop from "../assets/screenshots/testownik/testownik-test
 import przepisownikMainMobile from "../assets/screenshots/przepisownik/przepisownik-main-mobile.jpg";
 import przepisownikRecipeMobile from "../assets/screenshots/przepisownik/przepisownik-recipe-mobile.jpg";
 
+import weatherStation from "../assets/photos/weather-station/stacja-pogodowa.jpg";
+
 export interface Project {
   slug: string;
   icon: string;
@@ -45,6 +47,7 @@ export const projects: Project[] = [
     technologies: ["Rust"],
     codeLink: "https://github.com/Matipolit/Air-quality-project",
     featured: true,
+    images: [weatherStation],
   },
   {
     slug: "inventory",
