@@ -4,23 +4,32 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Never run two rsyncs to the server at the same time
+concurrency:
+  group: deploy
+  cancel-in-progress: false
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest # This forces the job onto GitHub's cloud runners
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
+      # pnpm version comes from "packageManager" in package.json
       - name: Install pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: 22
-          cache: 'pnpm'
+          node-version: 24
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -28,21 +37,18 @@ jobs:
       - name: Build Astro site
         run: pnpm run build
 
-      - name: Deploy via SSH and rsync
+      - name: Deploy to matipolit.ovh
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SSH_USER: ${{ secrets.SSH_USER }}
           SSH_HOST: ${{ secrets.SSH_HOST }}
         run: |
-          # 1. Create the .ssh directory
-          mkdir -p ~/.ssh
+          install -d -m 700 ~/.ssh
+          install -m 600 /dev/null ~/.ssh/deploy_key
+          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
+          ssh-keyscan -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
 
-          # 2. Securely write the private key and fix permissions
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-
-          # 3. Add your server to known_hosts so the connection doesn't hang asking for confirmation
-          ssh-keyscan -H $SSH_HOST >> ~/.ssh/known_hosts
-
-          # 4. Sync the dist folder to the server
-          rsync -avz ./dist/ $SSH_USER@$SSH_HOST:/var/www/html/
+          # No --delete: /var/www/html also holds files that aren't part of this site
+          rsync -az --itemize-changes \
+            -e "ssh -i ~/.ssh/deploy_key -o IdentitiesOnly=yes" \
+            ./dist/ "$SSH_USER@$SSH_HOST:/var/www/html/"
