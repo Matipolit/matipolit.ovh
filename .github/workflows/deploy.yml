@@ -48,7 +48,8 @@ jobs:
           printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
           ssh-keyscan -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
 
-          # No --delete: /var/www/html also holds files that aren't part of this site
-          rsync -az --itemize-changes \
+          # No --delete: /var/www/html also holds files that aren't part of this site.
+          # Compare by checksum (fresh builds have new mtimes), so only real changes get sent and logged.
+          rsync -rlpz --checksum --itemize-changes \
             -e "ssh -i ~/.ssh/deploy_key -o IdentitiesOnly=yes" \
             ./dist/ "$SSH_USER@$SSH_HOST:/var/www/html/"
