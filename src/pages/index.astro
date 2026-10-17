@@ -10,6 +10,8 @@ import PythonIcon from "../assets/python.svg";
 import DjangoIcon from "../assets/django.svg";
 import TypescriptIcon from "../assets/typescript.svg";
 import JavaIcon from "../assets/java.svg";
+import HertzNTLogo from "../assets/hertznt.svg";
+import NokiaLogo from "../assets/nokia.svg";
 ---
 
 <BaseLayout>
@@ -17,7 +19,7 @@ import JavaIcon from "../assets/java.svg";
         <img
             class="head"
             src="/assets/pic_proffesional_crop.webp"
-            alt="My photo"
+            alt="Portrait of me"
             loading="lazy"
         />
         <h1>Mateusz Polito | Software engineer</h1>
@@ -51,34 +53,109 @@ import JavaIcon from "../assets/java.svg";
 
         <br />
         <h3>💼 Work experience</h3>
-        <p>3 years as software tester @ Nokia</p>
-        <ul>
-            <li>
-                <p>
-                    Designed and executed automated tests in Python & Robot
-                    Framework for CPRI/eCPRI over optical fiber and embedded
-                    Linux updates
-                </p>
-            </li>
-            <li>
-                <p>
-                    Built an internal session management tool to monitor RDP/SSH
-                    usage across test setups, preventing conflicts
-                </p>
-            </li>
-            <li>
-                <p>
-                    Migrated multiple hardware test environments from Windows to
-                    Linux
-                </p>
-            </li>
-            <li>
-                <p>
-                    Performed on-site labwork with radio units, optical testing
-                    gear, fiber cables, and simulated hardware (SIMICS)
-                </p>
-            </li>
-        </ul>
+        <div class="job">
+            <div class="job-header">
+                <a
+                    class="logo-box"
+                    href="https://hertznt.eu/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Hertz New Technologies website"
+                >
+                    <HertzNTLogo class="company-logo" aria-hidden="true" />
+                </a>
+                <div class="job-heading">
+                    <p class="job-title">Junior Rust Engineer</p>
+                    <p class="job-dates">
+                        <span class="period">Sep 2026 – present</span>
+                    </p>
+                </div>
+            </div>
+            <ul>
+                <li>
+                    <p>
+                        Developing a simulator for drones and drone detection devices
+                        (Radar, RF, Optical) with realistic, frame-accurate behaviour
+                        based on ICDs and captured real data.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Building a fusion service combining detections from multiple
+                        sensors into a single Kalman-filtered track per drone, with
+                        capture and replay of real sensor traffic
+                    </p>
+                </li>
+            </ul>
+            <div class="tags">
+                {
+                    [
+                        "Rust",
+                        "Tokio",
+                        "Axum",
+                        "Docker",
+                        "JavaScript",
+                        "Three.js",
+                        "Vue.js",
+                    ].map((tech) => <span class="tag">{tech}</span>)
+                }
+            </div>
+        </div>
+        <div class="job">
+            <div class="job-header">
+                <a
+                    class="logo-box"
+                    href="https://www.nokia.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Nokia website"
+                >
+                    <NokiaLogo class="company-logo" aria-hidden="true" />
+                </a>
+                <div class="job-heading">
+                    <p class="job-title">Integration Test Engineer</p>
+                    <p class="job-dates">
+                        <span class="period">Aug 2022 – Mar 2024</span>
+                        <span class="period">Mar 2025 – Aug 2026</span>
+                    </p>
+                </div>
+            </div>
+            <ul>
+                <li>
+                    <p>
+                        Designed and executed automated tests for radio unit
+                        fronthaul over optical fiber and embedded OS updates
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Built an internal session management tool to monitor RDP/SSH
+                        usage across test setups, preventing conflicts
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Migrated multiple hardware test environments from Windows to
+                        Linux
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Performed on-site labwork with radio units, optical testing
+                        gear, fiber cables, and simulated hardware (SIMICS)
+                    </p>
+                </li>
+            </ul>
+            <div class="tags">
+                {
+                    ["Python", "Robot Framework", "(e)CPRI", "Linux"].map(
+                        (tech) => <span class="tag">{tech}</span>,
+                    )
+                }
+            </div>
+        </div>
+
+        <hr />
 
         <h3>🧑‍🎓 Education</h3>
         <p>Wrocław University of Science and Technology</p>
@@ -97,6 +174,8 @@ import JavaIcon from "../assets/java.svg";
                 <p>Thesis: Web app for shooting ranges</p>
             </li>
         </ul>
+
+        <hr />
 
         <h3>📍 Location</h3>
         <p>Wrocław, Poland</p>
@@ -128,6 +207,82 @@ import JavaIcon from "../assets/java.svg";
     #links a {
         display: flex;
         gap: 0.25rem;
+    }
+
+    .job {
+        margin-top: 0.75rem;
+        padding: 0.8rem 0.8rem 0;
+        border-radius: 0.4rem;
+        background-color: color-mix(
+            in srgb,
+            var(--card-background-color) 50%,
+            var(--background-color)
+        );
+        border: solid thin
+            color-mix(in srgb, var(--border-color) 50%, var(--background-color));
+    }
+
+    hr {
+        margin-block: 1.5rem;
+        border: none;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .tag {
+        font-size: 0.85rem;
+        padding: 0.1rem 0.5rem;
+        border-radius: 0.4rem;
+        background-color: var(--card-background-color);
+        border: solid thin var(--border-color);
+    }
+
+    .job-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .logo-box {
+        flex-shrink: 0;
+        width: 6.25rem;
+        display: flex;
+        color: inherit;
+        transition: opacity 0.2s;
+    }
+
+    .logo-box:hover {
+        color: inherit;
+        opacity: 0.7;
+    }
+
+    .job-title {
+        margin: 0;
+        font-weight: bold;
+    }
+
+    .job-dates {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 0.75rem;
+        margin: 0.15rem 0 0;
+        font-size: 0.9rem;
+        opacity: 0.75;
+    }
+
+    .period {
+        white-space: nowrap;
+    }
+
+    .company-logo {
+        width: 100%;
+        height: auto;
     }
 
     .head {

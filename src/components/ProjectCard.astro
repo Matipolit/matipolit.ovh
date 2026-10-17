@@ -116,19 +116,55 @@ const { project } = Astro.props;
     .card-external-link {
         position: relative;
         z-index: 2;
+        padding: 0.25rem 0.6rem;
+        border-radius: 0.4rem;
+        border: solid thin var(--border-color);
+        background-color: var(--background-color);
+        text-decoration: none;
+        font-size: 0.9rem;
+        white-space: nowrap;
     }
 
     .card-links {
-        margin-top: 0.4rem;
-    }
-
-    .card-links a + a {
-        margin-left: 0.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: 0.6rem;
     }
 
     .icons {
         margin-top: 0.4rem;
         display: flex;
         gap: 0.3rem;
+    }
+
+    /* Matches the row breakpoint in ProjectsSection: cards get narrow, so
+       move the tech icons under the description to give the title room. */
+    @media only screen and (min-width: 600px) {
+        .card-body {
+            justify-content: flex-start;
+        }
+
+        .card-body header {
+            display: contents;
+        }
+
+        .card-body > p {
+            margin-bottom: 0.4rem;
+            flex-grow: 1;
+        }
+
+        .icons {
+            order: 1;
+        }
+
+        .icons :global(.icon) {
+            width: 26px;
+            height: 26px;
+        }
+
+        .card-links {
+            order: 2;
+        }
     }
 </style>
